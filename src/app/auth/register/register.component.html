@@ -1,0 +1,51 @@
+<div class="flex  justify-center h-screen">
+    <form (submit)="register()" class="p-4 rounred-lg border m-auto w-1/3" #myForm="ngForm">
+        <h1 class="text-center text-xl">Register</h1>
+        <div class="my-5 w-full">
+            <label for="email">Email</label>
+            <input type="email" 
+                id="email"
+                name="email" 
+                class="p-2 rouned w-full border" 
+                placeholder="Email Addrees" 
+                [(ngModel)]="form.email" 
+                #email="ngModel" required>
+        </div>
+        <div *ngIf="email.invalid  && (email.dirty ||email.touched)" class="p-4 bg-red-300 text-red-800 rouded">
+            Email field must be valid
+        </div>
+        <div class="my-5 w-full">
+            <label for="password">Password</label>
+            <input type="password" 
+                    id="password" 
+                    name="password" 
+                    class="p-2 rouned w-full border" 
+                    placeholder="Password" 
+                    [(ngModel)]="form.password"
+                    #password="ngModel"
+                    required
+                    >
+        </div>
+        <div *ngIf="password.invalid  && (password.dirty ||password.touched)" class="p-4 bg-red-300 text-red-800 rouded">
+            Email field must be valid
+        </div>
+        <div class="my-5 w-full">
+            <label for="confrim-password">Confrim Password</label>
+            <input type="password" 
+                id="confrim-password" 
+                name="confrim-password" 
+                class="p-2 rouned w-full border" 
+                placeholder="Confrim Password" 
+                [(ngModel)]="form.confrimPassword"
+                #confrimPassword="ngModel"
+                required
+                >
+        </div>
+        <div *ngIf="confrimPassword.invalid  && (confrimPassword.dirty ||confrimPassword.touched)"  class="p-4 bg-red-300 text-red-800 rouded">
+            Email field must be valid
+        </div>
+        <div class="my-5 w-full">
+           <input  [disabled]="myForm.form.invalid" type="submit" class="p-2 w-full bg-purple-700 text-white hover:bg-purple-900  rouned w-full">
+        </div>
+    </form>
+</div>
