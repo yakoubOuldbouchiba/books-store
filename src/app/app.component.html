@@ -5,9 +5,17 @@
         <button><a routerLink="" routerLinkActive="ative">Book Shop</a> </button>
     </div>
     <div>
-        <a class="mx-4" routerLink="/cart" routerLinkActive="ative">My Cart</a>
-        <a class="mx-4" routerLink="/login" routerLinkActive="ative">Login</a>
-        <a class="mx-4" routerLink="/register" routerLinkActive="ative">Register</a>
+        <ng-container *ngIf="isAuthenficated()">
+            <a class="mx-4" routerLink="/cart" routerLinkActive="ative">My Cart</a>       
+        </ng-container>
+        <ng-container *ngIf="!isAuthenficated()">
+            <a class="mx-4" routerLink="/login" routerLinkActive="ative">Login</a>
+            <a class="mx-4" routerLink="/register" routerLinkActive="ative">Register</a> 
+        </ng-container>
+        <ng-container *ngIf="isAuthenficated()">
+            <button class="mx-4" (click)="logout()">Log out</button>  
+        </ng-container>
+        
     </div>
 </nav>
 <div class="p-4">

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Login } from 'src/app/types/AuthLogin';
+import { AuthService } from "../auth.service";
 
 @Component({
   selector: 'app-login',
@@ -7,13 +8,21 @@ import { Login } from 'src/app/types/AuthLogin';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  form : Login ={
-    email :'',
-    password : ''
+  constructor(private authService : AuthService){
+
+  }
+  form: Login = {
+    email: '',
+    password: ''
   }
 
-  login = ()=>{
-    console.log(this.form);
+
+  login = () => {
+    this.authService.login(this.form);
+  }
+
+  isLoading(){
+    return this.authService.isLoading;
   }
 
 }
