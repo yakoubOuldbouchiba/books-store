@@ -1,6 +1,9 @@
-<h2>Programming Books List!</h2>
+<div class="text-center py-2 divide-y ext-gray-900">
+    <h2 class="font-bold tracking-tight text-gray-900">Programming Books List!</h2>
+</div>
 
-<ul *ngIf="isShowing">
+
+<ul class="grid gap-4 grid-cols-1 sm:grid-cols-3" *ngIf="isShowing">
     <ng-container *ngFor="let book of books ; let i=index">
         <app-book   class="book" [book]="book"></app-book>
     </ng-container>
