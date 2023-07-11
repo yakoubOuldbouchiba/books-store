@@ -9,7 +9,7 @@
             <p class="text-lg font-semibold tracking-wide ">{{ book.name | titlecase}} by {{ book.author | titlecase}}</p>
             <p class="text-slate-400">{{ book.amount | currency:'DZD' }}</p>
         </div>
-        <div>
+        <div *ngIf="isAuthenficated()">
             <button class="bg-green-400 text-white p-2 rounded-md" (click)="addToCard()" *ngIf="!isInCart"> Add to Card</button>
             <button class="bg-orange-300 text-white p-2 rounded-md" (click)="removeToCard()" *ngIf="isInCart"> Remove to Card</button>
         </div>

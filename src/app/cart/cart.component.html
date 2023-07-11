@@ -1,11 +1,27 @@
-<h1>Your Cart</h1>
-<div *ngIf="getCart().length > 0"><ul>
-    <ng-container *ngFor="let book of getCart()">
-        <li>
-            <p>{{ book.name | titlecase}} {{ book.amount | currency:'DZD'}}</p>
-        </li>
+<div class="grid grid-cols-1 mx-auto justify-items-center w-6/12  shadow-md rounded-md">
+    <h1 class="p-2 my-4 text-center font-semibold text-lg" >Your Cart</h1>
+    <ng-container  *ngIf="getCart().length > 0">
+        <ul class="w-full justify-self-start">
+            <ng-container *ngFor="let book of getCart()">
+                <li class="grid grid-cols-3 gap-4 p-2">
+                    <div class="col-span-2 flex flex-row">
+                        <div class="px-2">
+                            <img [src]="book.src" [alt]="book.name" width="50">
+                        </div>
+                        <div>
+                            <p class="font-semibold">{{ book.name | titlecase}}</p>
+                            <p class="text-slate-400 font-bold">{{ book.amount | currency:'DZD'}}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-span-1">
+                        <button class="bg-red-500 text-white py-2 px-3 rounded-md" (click)="removeBook(book)">Remove</button>
+                    </div>
+                </li>
+            </ng-container>
+        </ul>
     </ng-container>
-    
-</ul></div>
-<div *ngIf="getCart().length <= 0">No books in your cart</div>
+    <div class="p-2 text-center text-slate-400 font-light" *ngIf="getCart().length <= 0">No books in your cart</div>
+</div>
+
 

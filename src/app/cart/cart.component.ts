@@ -15,4 +15,8 @@ export class CartComponent  {
     return this.cartService.get();
    }
 
+   removeBook = (book : Book) =>{
+    this.cartService.remove(book);
+   }
+
 }
